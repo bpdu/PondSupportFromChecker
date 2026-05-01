@@ -1,0 +1,3 @@
+This project is an Outlook event-based Office Add-in for Microsoft 365 that validates the selected sender address before an email is sent. It targets reply scenarios in Outlook on the web and uses Smart Alerts (`OnMessageSend`) to show a non-blocking warning when the sender domain does not match the domain of the original recipient, including support for stricter address-specific rules.
+
+The add-in is hosted as static files over HTTPS and deployed through Microsoft 365 Admin Center to selected users for controlled rollout and testing. Runtime logic is implemented in JavaScript, while the manifest defines permissions, requirement sets, launch events, and resource URLs required to run sender validation during message send.
