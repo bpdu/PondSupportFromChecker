@@ -30,9 +30,11 @@ function onMessageSendHandler(event) {
     }
 
     event.completed({ allowEvent: true });
-  }).catch(() => {
-    // Do not block send on unexpected runtime/API failures.
-    event.completed({ allowEvent: true });
+  }).catch((error) => {
+    event.completed({
+      allowEvent: false,
+      errorMessage: "Support From Checker diagnostic: " + String((error && error.message) || error || "unknown error")
+    });
   });
 }
 
@@ -200,7 +202,8 @@ function makeEwsRequest(requestXml) {
   return new Promise((resolve, reject) => {
     Office.context.mailbox.makeEwsRequestAsync(requestXml, (result) => {
       if (result.status !== Office.AsyncResultStatus.Succeeded) {
-        reject(new Error("EWS request failed"));
+        const err = result.error && (result.error.message || result.error.name);
+        reject(new Error("EWS request failed: " + String(err || "unknown")));
         return;
       }
 
