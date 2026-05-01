@@ -47,51 +47,61 @@
 
   <DisableEntityHighlighting>false</DisableEntityHighlighting>
 
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
-                    xsi:type="VersionOverridesV1_1">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+                      xsi:type="VersionOverridesV1_1">
 
-    <Requirements>
-      <bt:Sets DefaultMinVersion="1.14">
-        <bt:Set Name="Mailbox"/>
-      </bt:Sets>
-    </Requirements>
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.14">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
 
-    <Hosts>
-      <Host xsi:type="MailHost">
-        <DesktopFormFactor>
-          <FunctionFile resid="WebViewRuntime.Url"/>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <Runtimes>
+            <Runtime resid="WebViewRuntime.Url">
+              <Override type="javascript" resid="JSRuntime.Url"/>
+            </Runtime>
+          </Runtimes>
 
-          <ExtensionPoint xsi:type="LaunchEvent">
-            <LaunchEvents>
-              <LaunchEvent Type="OnMessageSend"
-                           FunctionName="onMessageSendHandler"
-                           SendMode="PromptUser"/>
-            </LaunchEvents>
-            <SourceLocation resid="WebViewRuntime.Url"/>
-          </ExtensionPoint>
-        </DesktopFormFactor>
-      </Host>
-    </Hosts>
+          <DesktopFormFactor>
+            <FunctionFile resid="WebViewRuntime.Url"/>
 
-    <Resources>
-      <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-16.png"/>
-        <bt:Image id="Icon.32" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-32.png"/>
-        <bt:Image id="Icon.80" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-80.png"/>
-      </bt:Images>
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnMessageSend"
+                             FunctionName="onMessageSendHandler"
+                             SendMode="PromptUser"/>
+              </LaunchEvents>
+              <SourceLocation resid="WebViewRuntime.Url"/>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
 
-      <bt:Urls>
-        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/runtime.html"/>
-      </bt:Urls>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-16.png"/>
+          <bt:Image id="Icon.32" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-32.png"/>
+          <bt:Image id="Icon.80" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-80.png"/>
+        </bt:Images>
 
-      <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="Support Checker"/>
-      </bt:ShortStrings>
+        <bt:Urls>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/runtime.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/launchevent.js"/>
+        </bt:Urls>
 
-      <bt:LongStrings>
-        <bt:String id="Description" DefaultValue="Warns on sender/recipient mismatch."/>
-      </bt:LongStrings>
-    </Resources>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Support Checker"/>
+        </bt:ShortStrings>
 
+        <bt:LongStrings>
+          <bt:String id="Description" DefaultValue="Warns on sender/recipient mismatch."/>
+        </bt:LongStrings>
+      </Resources>
+
+    </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>
