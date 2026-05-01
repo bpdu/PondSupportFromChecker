@@ -4,17 +4,17 @@ const RULES = [
   {
     originalRecipient: "support@pondiot.com",
     validDomain: "@pondiot.com",
-    message: "Вы отвечаете на письмо, адресованное support@pondiot.com. Отправитель должен быть из домена @pondiot.com."
+    message: "You're replying to a message addressed to support@pondiot.com. The sender must be from the @pondiot.com domain."
   },
   {
     originalRecipient: "support@pondmobile.com",
     validDomain: "@pondmobile.com",
-    message: "Вы отвечаете на письмо, адресованное support@pondmobile.com. Отправитель должен быть из домена @pondmobile.com."
+    message: "You're replying to a message addressed to support@pondmobile.com. The sender must be from the @pondmobile.com domain."
   },
   {
     originalRecipient: "upsupport@pondiot.com",
     exactFrom: "upsupport@pondiot.com",
-    message: "Вы отвечаете на письмо, адресованное upsupport@pondiot.com. Нужно отправлять строго от upsupport@pondiot.com."
+    message: "You're replying to a message addressed to upsupport@pondiot.com. The sender must be exactly upsupport@pondiot.com."
   }
 ];
 
