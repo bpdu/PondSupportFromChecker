@@ -1,22 +1,23 @@
 Office.onReady(() => {});
 
-const RULES = [
+const DOMAIN_RULES = [
   {
-    originalRecipient: "support@pondiot.com",
-    validDomain: "@pondiot.com",
-    message: "You're replying to a message addressed to support@pondiot.com. The sender must be from the @pondiot.com domain."
+    originalDomain: "@pondiot.com",
+    validFromDomain: "@pondiot.com",
+    message: "You're replying to a message addressed to a @pondiot.com mailbox. The sender must be from the @pondiot.com domain."
   },
   {
-    originalRecipient: "support@pondmobile.com",
-    validDomain: "@pondmobile.com",
-    message: "You're replying to a message addressed to support@pondmobile.com. The sender must be from the @pondmobile.com domain."
-  },
-  {
-    originalRecipient: "upsupport@pondiot.com",
-    exactFrom: "upsupport@pondiot.com",
-    message: "You're replying to a message addressed to upsupport@pondiot.com. The sender must be exactly upsupport@pondiot.com."
+    originalDomain: "@pondmobile.com",
+    validFromDomain: "@pondmobile.com",
+    message: "You're replying to a message addressed to a @pondmobile.com mailbox. The sender must be from the @pondmobile.com domain."
   }
 ];
+
+const STRICT_ADDRESS_RULE = {
+  originalRecipient: "upsupport@pondiot.com",
+  exactFrom: "upsupport@pondiot.com",
+  message: "You're replying to a message addressed to upsupport@pondiot.com. The sender must be exactly upsupport@pondiot.com."
+};
 
 function onMessageSendHandler(event) {
   validateReplyFrom().then((result) => {
@@ -53,17 +54,23 @@ async function validateReplyFrom() {
     return { ok: true };
   }
 
-  for (const rule of RULES) {
-    if (!originalToRecipients.includes(rule.originalRecipient)) {
-      continue;
-    }
+  // Most specific rule first.
+  if (
+    originalToRecipients.includes(STRICT_ADDRESS_RULE.originalRecipient) &&
+    from !== STRICT_ADDRESS_RULE.exactFrom
+  ) {
+    return { ok: false, message: STRICT_ADDRESS_RULE.message };
+  }
 
-    if (rule.validDomain && !from.endsWith(rule.validDomain)) {
-      return { ok: false, message: rule.message };
-    }
+  for (const recipient of originalToRecipients) {
+    for (const domainRule of DOMAIN_RULES) {
+      if (!recipient.endsWith(domainRule.originalDomain)) {
+        continue;
+      }
 
-    if (rule.exactFrom && from !== rule.exactFrom) {
-      return { ok: false, message: rule.message };
+      if (!from.endsWith(domainRule.validFromDomain)) {
+        return { ok: false, message: domainRule.message };
+      }
     }
   }
 
