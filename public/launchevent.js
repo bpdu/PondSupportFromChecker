@@ -112,15 +112,22 @@ function findOriginalItemIdByInternetMessageId(internetMessageId) {
         '<t:RequestServerVersion Version="Exchange2013"/>' +
       "</soap:Header>" +
       "<soap:Body>" +
-        '<m:FindItem Traversal="Shallow">' +
+        '<m:FindItem Traversal="Deep">' +
           "<m:ItemShape>" +
             "<t:BaseShape>IdOnly</t:BaseShape>" +
           "</m:ItemShape>" +
           '<m:IndexedPageItemView MaxEntriesReturned="1" Offset="0" BasePoint="Beginning"/>' +
+          "<m:Restriction>" +
+            "<t:IsEqualTo>" +
+              '<t:FieldURI FieldURI="item:InternetMessageId"/>' +
+              "<t:FieldURIOrConstant>" +
+                '<t:Constant Value="' + escapedId + '"/>' +
+              "</t:FieldURIOrConstant>" +
+            "</t:IsEqualTo>" +
+          "</m:Restriction>" +
           "<m:ParentFolderIds>" +
-            '<t:DistinguishedFolderId Id="inbox"/>' +
+            '<t:DistinguishedFolderId Id="msgfolderroot"/>' +
           "</m:ParentFolderIds>" +
-          "<m:QueryString>InternetMessageId:" + escapedId + "</m:QueryString>" +
         "</m:FindItem>" +
       "</soap:Body>" +
     "</soap:Envelope>";
