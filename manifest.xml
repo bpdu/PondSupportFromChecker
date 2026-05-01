@@ -12,13 +12,13 @@
   <DisplayName DefaultValue="Support From Checker"/>
   <Description DefaultValue="Checks sender address before sending."/>
 
-  <IconUrl DefaultValue="https://localhost:3000/icons/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/icons/icon-32.png"/>
+  <IconUrl DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-32.png"/>
 
-  <SupportUrl DefaultValue="https://localhost:3000"/>
+  <SupportUrl DefaultValue="https://bpdu.github.io/PondSupportFromChecker"/>
 
   <AppDomains>
-    <AppDomain>https://localhost:3000</AppDomain>
+    <AppDomain>https://bpdu.github.io/PondSupportFromChecker</AppDomain>
   </AppDomains>
 
   <Hosts>
@@ -34,7 +34,7 @@
   <FormSettings>
     <Form xsi:type="ItemEdit">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/runtime.html"/>
+        <SourceLocation DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/runtime.html"/>
       </DesktopSettings>
     </Form>
   </FormSettings>
@@ -75,13 +75,13 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/icons/icon-16.png"/>
-        <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/icons/icon-32.png"/>
-        <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/icons/icon-80.png"/>
+        <bt:Image id="Icon.16" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/icons/icon-80.png"/>
       </bt:Images>
 
       <bt:Urls>
-        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/runtime.html"/>
+        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://bpdu.github.io/PondSupportFromChecker/public/runtime.html"/>
       </bt:Urls>
 
       <bt:ShortStrings>
