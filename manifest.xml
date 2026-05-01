@@ -18,7 +18,7 @@
   <SupportUrl DefaultValue="https://bpdu.github.io/PondSupportFromChecker"/>
 
   <AppDomains>
-    <AppDomain>https://bpdu.github.io/PondSupportFromChecker</AppDomain>
+    <AppDomain>https://bpdu.github.io</AppDomain>
   </AppDomains>
 
   <Hosts>
