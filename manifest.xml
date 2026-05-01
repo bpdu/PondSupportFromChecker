@@ -27,7 +27,7 @@
 
   <Requirements>
     <Sets>
-      <Set Name="Mailbox" MinVersion="1.12"/>
+      <Set Name="Mailbox" MinVersion="1.14"/>
     </Sets>
   </Requirements>
 
@@ -39,7 +39,7 @@
     </Form>
   </FormSettings>
 
-  <Permissions>ReadWriteItem</Permissions>
+  <Permissions>ReadWriteMailbox</Permissions>
 
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
@@ -51,7 +51,7 @@
                     xsi:type="VersionOverridesV1_1">
 
     <Requirements>
-      <bt:Sets DefaultMinVersion="1.12">
+      <bt:Sets DefaultMinVersion="1.14">
         <bt:Set Name="Mailbox"/>
       </bt:Sets>
     </Requirements>
