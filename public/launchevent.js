@@ -1,4 +1,5 @@
 Office.onReady(() => {});
+const DEBUG_FORCE_PROMPT = true;
 
 const DOMAIN_RULES = [
   {
@@ -20,6 +21,14 @@ const STRICT_ADDRESS_RULE = {
 };
 
 function onMessageSendHandler(event) {
+  if (DEBUG_FORCE_PROMPT) {
+    event.completed({
+      allowEvent: false,
+      errorMessage: "Support From Checker diagnostic: OnMessageSend handler is running."
+    });
+    return;
+  }
+
   validateReplyFrom().then((result) => {
     if (!result.ok) {
       event.completed({
