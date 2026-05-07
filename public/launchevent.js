@@ -1,5 +1,5 @@
 Office.onReady(() => {});
-const DEBUG_FORCE_PROMPT = true;
+const DEBUG_FORCE_PROMPT = false;
 
 const DOMAIN_RULES = [
   {
